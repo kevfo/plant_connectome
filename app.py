@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask_profiler import Profiler
 
 # == IMPORTING THE ROUTES  ==
 from routes.author_search import author_search
@@ -39,4 +40,4 @@ def features():
     return render_template('features.html', piechart_code = piechart)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug = True)
