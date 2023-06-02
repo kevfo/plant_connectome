@@ -13,6 +13,10 @@ sys.path.append('utils')
 from utils.search import Gene
 from utils.cytoscape import process_network, generate_cytoscape_js
 from utils.text import make_text
+from utils.CONSTANTS import DATABASE, AUTHORS
+
+genes = DATABASE
+papers = AUTHORS
 
 author_search = Blueprint('author_search', __name__)
 
@@ -26,9 +30,10 @@ def author():
         my_search = 'Marek Mutwil'.lower()
 
     if my_search!='':
-        with open('authors', 'rb') as f:
+        '''with open('authors', 'rb') as f:
             # Load the object from the file
-            papers = pickle.load(f)
+            papers = pickle.load(f)'''
+        papers = AUTHORS
         hits = []
         for author in papers:      
             if len(set(my_search.split()) & set(author.lower().split())) == len(set(my_search.split())):
@@ -47,8 +52,8 @@ def author():
         
         forSending = []
         if hits != []:
-            with open('allDic2', 'rb') as file:
-                genes = pickle.load(file)
+            '''with open('allDic2', 'rb') as file:
+                genes = pickle.load(file)'''
             
             
             elements = []

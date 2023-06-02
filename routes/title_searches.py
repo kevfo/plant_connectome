@@ -12,6 +12,10 @@ sys.path.append('utils')
 from utils.search import Gene
 from utils.cytoscape import process_network, generate_cytoscape_js
 from utils.text import make_text
+from utils.CONSTANTS import DATABASE, TITLES
+
+papers = TITLES
+genes = DATABASE
 
 title_searches = Blueprint('title_searches', __name__)
 
@@ -28,16 +32,16 @@ def title_search():
     forSending = []
     if pmids != []:
         
-        with open('titles', 'rb') as f:
+        '''with open('titles', 'rb') as f:
             # Load the object from the file
-            papers = pickle.load(f)
+            papers = pickle.load(f)'''
 
         hits = list(set(pmids) & set(papers))
         
         
         if hits!=[]:
-            with open('allDic2', 'rb') as file:
-                genes = pickle.load(file)
+            '''with open('allDic2', 'rb') as file:
+                genes = pickle.load(file)'''
             
             
             elements = [] 
